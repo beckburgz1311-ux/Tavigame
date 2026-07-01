@@ -7,6 +7,7 @@ const packages = [
   'src/ui.js',
   'src/enemies.js',
   'src/powers.js',
+  'src/touch.js',
   'src/world.js',
   'src/renderer.js',
   'src/main.js'
