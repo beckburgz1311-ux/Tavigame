@@ -11,11 +11,21 @@
     if (G.keys.has('a') || G.keys.has('arrowleft')) horizontal -= 1;
     if (G.keys.has('d') || G.keys.has('arrowright')) horizontal += 1;
 
-    const length = Math.hypot(horizontal, vertical) || 1;
-    const isMoving = horizontal !== 0 || vertical !== 0;
+    if (G.touchMovement) {
+      horizontal += G.touchMovement.x;
+      vertical += G.touchMovement.y;
+    }
 
-    player.x = G.clamp(player.x + horizontal / length * player.speed * deltaTime, player.radius, 1280 - player.radius);
-    player.y = G.clamp(player.y + vertical / length * player.speed * deltaTime, player.radius, 720 - player.radius);
+    const magnitude = Math.hypot(horizontal, vertical);
+    if (magnitude > 1) {
+      horizontal /= magnitude;
+      vertical /= magnitude;
+    }
+
+    const isMoving = Math.hypot(horizontal, vertical) > 0.04;
+
+    player.x = G.clamp(player.x + horizontal * player.speed * deltaTime, player.radius, 1280 - player.radius);
+    player.y = G.clamp(player.y + vertical * player.speed * deltaTime, player.radius, 720 - player.radius);
     player.invulnerableTime = Math.max(0, player.invulnerableTime - deltaTime);
 
     const shieldLevel = G.powerLevel('shield');
