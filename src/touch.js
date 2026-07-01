@@ -34,49 +34,37 @@
     .touch-device .mobile-controls {
       display: block;
       position: absolute;
-      left: 16px;
-      bottom: 16px;
-      width: 154px;
-      height: 154px;
+      left: 8px;
+      bottom: 8px;
+      width: 104px;
+      height: 104px;
       z-index: 10;
     }
     .joystick-base {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      border: 3px solid rgba(255,255,255,.3);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 52px;
+      height: 52px;
+      border: 2px solid rgba(255,255,255,.3);
       border-radius: 50%;
       background: rgba(5,9,20,.62);
-      box-shadow: inset 0 0 30px rgba(0,0,0,.35), 0 8px 28px rgba(0,0,0,.35);
+      box-shadow: inset 0 0 10px rgba(0,0,0,.35), 0 3px 9px rgba(0,0,0,.35);
     }
     .joystick-knob {
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 66px;
-      height: 66px;
-      margin-left: -33px;
-      margin-top: -33px;
-      border: 3px solid rgba(255,255,255,.4);
+      width: 22px;
+      height: 22px;
+      margin-left: -11px;
+      margin-top: -11px;
+      border: 1px solid rgba(255,255,255,.4);
       border-radius: 50%;
       background: rgba(141,255,189,.82);
-      box-shadow: 0 5px 18px rgba(0,0,0,.4);
+      box-shadow: 0 2px 6px rgba(0,0,0,.4);
       pointer-events: none;
       transform: translate(0,0);
-    }
-    @media (orientation: landscape) and (max-height: 560px) {
-      .touch-device .mobile-controls {
-        width: 132px;
-        height: 132px;
-        left: 10px;
-        bottom: 10px;
-      }
-      .joystick-knob {
-        width: 58px;
-        height: 58px;
-        margin-left: -29px;
-        margin-top: -29px;
-      }
     }
   `;
   document.head.appendChild(style);
@@ -106,23 +94,22 @@
     knob.style.transform = 'translate(0,0)';
   }
 
-  base.addEventListener('pointerdown', event => {
+  controls.addEventListener('pointerdown', event => {
     event.preventDefault();
     activePointer = event.pointerId;
-    base.setPointerCapture(event.pointerId);
+    controls.setPointerCapture(event.pointerId);
     updateStick(event);
   });
 
-  base.addEventListener('pointermove', event => {
+  controls.addEventListener('pointermove', event => {
     if (event.pointerId !== activePointer) return;
     event.preventDefault();
     updateStick(event);
   });
 
-  base.addEventListener('pointerup', releaseStick);
-  base.addEventListener('pointercancel', releaseStick);
-  base.addEventListener('lostpointercapture', releaseStick);
-
+  controls.addEventListener('pointerup', releaseStick);
+  controls.addEventListener('pointercancel', releaseStick);
+  controls.addEventListener('lostpointercapture', releaseStick);
   controls.addEventListener('contextmenu', event => event.preventDefault());
   controls.addEventListener('selectstart', event => event.preventDefault());
   arena.addEventListener('selectstart', event => event.preventDefault());
