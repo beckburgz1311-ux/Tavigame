@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#0b1020">
+<title>Tavi's Last Round</title>
+<link rel="stylesheet" href="styles.css?v=20260701-3">
+<link rel="stylesheet" href="mobile-fix.css?v=20260701-3">
+</head>
+<body>
+<main class="game-shell">
+<header class="topbar"><div><p class="eyebrow">TAVIGAME</p><h1>Tavi's Last Round</h1></div><button id="pauseButton" class="ghost-button" type="button">Pause</button></header>
+<section class="hud" aria-label="Game status">
+<div class="stat"><span>Level</span><strong id="levelValue">1</strong></div><div class="stat"><span>Wave</span><strong id="waveValue">1</strong></div><div class="stat"><span>Kills</span><strong id="killsValue">0</strong></div><div class="stat"><span>Time</span><strong id="timeValue">00:00</strong></div>
+<div class="health-panel"><div class="bar-label"><span>Health</span><strong id="healthValue">100 / 100</strong></div><div class="bar"><div id="healthBar" class="bar-fill health-fill"></div></div></div>
+<div class="xp-panel"><div class="bar-label"><span>Experience</span><strong id="xpValue">0 / 12</strong></div><div class="bar"><div id="xpBar" class="bar-fill xp-fill"></div></div></div>
+</section>
+<section class="arena-wrap"><canvas id="gameCanvas" width="1280" height="720" aria-label="Game arena"></canvas><div id="announcement" class="announcement"></div><div id="mobileControls" class="mobile-controls" aria-label="Analogue movement stick"></div></section>
+<section class="bottom-panel"><div><p class="panel-label">Current powers <span id="slotCounter">0 / 4</span></p><div id="powerSlots" class="power-slots"></div></div><div class="controls-card"><p class="panel-label">Controls</p><p>Drag the analogue stick to move. Attacks trigger automatically.</p></div></section>
+</main>
+<div id="startModal" class="modal open" role="dialog" aria-modal="true"><div class="modal-card intro-card"><p class="eyebrow">SURVIVE. LEVEL. BREAK THE BUILD.</p><h2>Tavi's Last Round</h2><p>Fight through increasingly nasty waves, collect experience, and build a loadout of up to four powers from a pool of ten.</p><div class="feature-grid"><span>10 powers</span><span>4-slot builds</span><span>Boss waves</span><span>Random upgrades</span></div><button id="startButton" class="primary-button" type="button">Start run</button></div></div>
+<div id="levelModal" class="modal" role="dialog" aria-modal="true"><div class="modal-card upgrade-card"><p class="eyebrow">LEVEL UP</p><h2>Choose one power</h2><p>Pick a new ability or improve one already in your build.</p><div id="powerChoices" class="power-choices"></div><button id="rerollButton" class="ghost-button reroll-button" type="button">Reroll (<span id="rerollsValue">1</span>)</button></div></div>
+<div id="gameOverModal" class="modal" role="dialog" aria-modal="true"><div class="modal-card results-card"><p class="eyebrow">RUN OVER</p><h2>Tavi got folded.</h2><div id="results" class="results"></div><button id="restartButton" class="primary-button" type="button">Run it back</button></div></div>
+<script type="module" src="app.js?v=20260701-3"></script>
+</body>
+</html>
