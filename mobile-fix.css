@@ -1,0 +1,21 @@
+@media (hover: none), (pointer: coarse) {
+  html,
+  body,
+  .arena-wrap,
+  #gameCanvas,
+  .mobile-controls,
+  .mobile-controls *,
+  button {
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .arena-wrap,
+  #gameCanvas,
+  .mobile-controls,
+  .mobile-controls * {
+    touch-action: none !important;
+  }
+}
