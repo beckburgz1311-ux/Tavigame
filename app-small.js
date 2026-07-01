@@ -1,0 +1,10 @@
+import './src/core.js';
+import './src/data.js';
+import './src/progression.js';
+import './src/ui.js';
+import './src/enemies.js';
+import './src/powers.js';
+import './src/touch-small.js';
+import './src/world.js';
+import './src/renderer.js';
+import './src/main.js';
